@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RazorCommerce.Models;
 
 namespace RazorCommerce.Data
 {
@@ -9,5 +10,6 @@ namespace RazorCommerce.Data
             : base(options)
         {
         }
+        public DbSet<RazorCommerce.Models.Movie> Movie { get; set; }
     }
 }
