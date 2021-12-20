@@ -10,6 +10,6 @@ namespace RazorCommerce.Data
             : base(options)
         {
         }
-        public DbSet<RazorCommerce.Models.Movie>? Movie { get; set; }
+        public DbSet<Movie>? Movie { get; set; }
     }
 }
