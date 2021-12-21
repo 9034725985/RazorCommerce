@@ -7,7 +7,7 @@ Add user secrets to your project
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=your-local-server-name-here; Database=new-database-name-here; User ID=user-name-here; Password=password-here;"
+    "DefaultConnection": "connection-string-here;"
   }
 }
 ```
