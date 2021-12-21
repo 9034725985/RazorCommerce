@@ -39,16 +39,17 @@ namespace RazorCommerce.Pages.Movies
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            int status = 0;
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Movie).State = EntityState.Modified;
+             _context.Attach(Movie).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                status = await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -62,7 +63,7 @@ namespace RazorCommerce.Pages.Movies
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", status);
         }
 
         private bool MovieExists(int id)

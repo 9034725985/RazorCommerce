@@ -183,5 +183,111 @@ Microsoft.EntityFrameworkCore.Database.Command[20101]
       INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
       VALUES (N'20211217220717_CreateMoviePageFromTutorial', N'6.0.1');
 Done.
+PM> Add-Migration Rating
+Build started...
+Build succeeded.
+Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.1 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.1' with options: None
+To undo this action, use Remove-Migration.
+PM> Update-Database
+Build started...
+Build succeeded.
+Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.1 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.1' with options: None
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20211221001253_Rating'.
+Applying migration '20211221001253_Rating'.
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE [Movie] ADD [Rating] nvarchar(max) NOT NULL DEFAULT N'';
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+      VALUES (N'20211221001253_Rating', N'6.0.1');
+Done.
+PM> Add-Migration AddValidation
+Build started...
+Build failed.
+PM> Add-Migration AddValidation
+Build started...
+Build succeeded.
+Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.1 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.1' with options: None
+An operation was scaffolded that may result in the loss of data. Please review the migration for accuracy.
+To undo this action, use Remove-Migration.
+PM> Update-Database
+Build started...
+Build succeeded.
+Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.1 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.1' with options: None
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (36ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20211221001700_AddValidation'.
+Applying migration '20211221001700_AddValidation'.
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DECLARE @var0 sysname;
+      SELECT @var0 = [d].[name]
+      FROM [sys].[default_constraints] [d]
+      INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+      WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movie]') AND [c].[name] = N'Title');
+      IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Movie] DROP CONSTRAINT [' + @var0 + '];');
+      ALTER TABLE [Movie] ALTER COLUMN [Title] nvarchar(60) NOT NULL;
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DECLARE @var1 sysname;
+      SELECT @var1 = [d].[name]
+      FROM [sys].[default_constraints] [d]
+      INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+      WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movie]') AND [c].[name] = N'Rating');
+      IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Movie] DROP CONSTRAINT [' + @var1 + '];');
+      ALTER TABLE [Movie] ALTER COLUMN [Rating] nvarchar(5) NOT NULL;
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DECLARE @var2 sysname;
+      SELECT @var2 = [d].[name]
+      FROM [sys].[default_constraints] [d]
+      INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+      WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Movie]') AND [c].[name] = N'Genre');
+      IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Movie] DROP CONSTRAINT [' + @var2 + '];');
+      ALTER TABLE [Movie] ALTER COLUMN [Genre] nvarchar(30) NOT NULL;
+Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+      VALUES (N'20211221001700_AddValidation', N'6.0.1');
+Done.
 PM> 
 ```
